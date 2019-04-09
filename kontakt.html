@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Opština Lajkovac</title>
+		<link rel="stylesheet" type="text/css" href="stil.css">
+		<meta name="descripon" content="U sastav opštine Lajkovac pored varošice lajkovac ulazi i 18 naseljenih mesta: Jabučje, Bogovađa, Nepričava, Vračević, Donji Lajkovac, Lajkovac (selo), Rubribreza, Markova Crkva, Ratkovac, Pridvorica, Mali Borak, Skobalj, Pepeljevac, Slovac, Stepanje, Strmovo, Bajevac i Ćelije.">
+		<meta name="keywords" content="lajkovac, opstina, lajkovacka pruga, zeleznicar lajkovac, Bogovađa">
+		<meta name="author" content="Nemanja Savić">
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
+		<script type="text/javascript" src="lib/jquery.scrollTo.js" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#meni li ul").css({display:"none",left:"auto"});
+  				$("#meni li").hover(function(){
+    			$(this).find('ul').stop(true,true).slideDown('fast');
+ 			 }, function(){
+    			$(this).find('ul').stop(true,true).fadeOut('fast');
+  				});
+
+  				$(window).scroll(function(){
+  					if ($(this).scrollTop() > 220) {
+           				$('#top').fadeIn();
+        			} else {
+          			 	$('#top').fadeOut();
+       				}
+  				});
+
+  				$('#top a[href=#]').click(function(){
+    				$.scrollTo(0,'slow');
+   					return false;
+  				});
+
+  				$(window).scroll(function(){
+  					if ($(this).scrollTop() > 100) {
+  						$('#logo').fadeOut();
+  						$('#mlogo').fadeIn();
+  					}
+  					else{
+  						$('#mlogo').fadeOut();
+  						$('#logo').fadeIn();
+  					}
+  				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="zaglavlje">
+			<div id="logo">
+				<a href="index.html"><img src="slike/grb.png" alt="grb_lajkovac"></a>
+			</div>
+			<div id="naslov">
+				<h1>Lajkovac</h1>
+			</div>
+			<div id="logovanje">
+				<form name="formaLogovanje" action="" method="post">
+					<input type="text" class="tbLogovanje" name="tbUsername" placeholder="Username" required><br/>
+					<input type="password" class="tbLogovanje" name="tbLozinka" placeholder="Lozinka" required><br/>
+					<input type="button" name="btbLogin" class="dugme" onclick="log();" value="Pristupi">
+					<input type="reset" name="btnPonisti" class="dugme" value="Poništi">
+					<br/>
+					ILI <a href="registracija.html" class="rLink">REGISTRUJTE SE!</a>
+				</form>
+			</div>
+			<div class="cisti"></div>
+		</div>
+		<div id="meni">
+		<div id="mlogo"></div>
+			<div id="meniLista">
+			<ul>
+				<li class="aktivan"><a href="index.html">Početna</a></li>
+				<li class="aktivan"><a href="#">O Gradu</a>
+					<ul>
+						<li><a href="ogradu.html">Lajkovac</a></li>
+						<li><a href="istorija.html">Istorija</a></li>
+						<li><a href="izletista.html">Izletista</a></li>
+						<li><a href="naselja.xml" target="_blank">Popis stanovnika</a></li>
+					</ul>
+				</li>
+				<li class="aktivan"><a href="galerija.html">Galerija</a></li>
+				<li class="aktivan"><a href="kontakt.html">Kontakt</a></li>
+				<li class="aktivan"><a href="oautoru.html">O autoru</a></li>
+			</ul>
+		</div>
+			<span id="korisnik"></span>
+		</div>
+		
+		<div class="cisti"></div>
+
+		<div id="sadrzaj">
+			
+			<div id="dole">
+				<div id="levo">
+					<div id="fkontakt">
+					<h4>Pošaljite nam mejl</h4>
+						<form action="" method="post" name="formaKontakt" >
+							<table>
+								<tr>
+									<td><label for="za">Za:</label></td>
+									<td><input type="text" name="za" id="za" required placeholder="pera@pera.com" onblur="proveraZa();"></td>
+								</tr>
+								<tr>
+									<td><label for="tekst">Tekst:</label></td>
+									<td><textarea name="tekst" id="tekst"></textarea></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<input class="dugme" type="button" name="mejl" id="mejl" value="Pošalji" onclick="slanje();">
+										<input class="dugme" type="reset" name="ponisti" id="ponisti" value="Poništi">
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+				<div id="desno">
+						<div id="pretraga">
+								<form action="pretraga.html" name="formaPretraga" method="post">
+						<input type="text" id="tbPretraga" class="tbPretraga" name="tbPretraga" />
+						<input type="button" class="pretraga" id="btnPretraga" name="btnPretraga" onclick="pretraga();" value=""/>
+						</form>
+							</div>
+					<div class="sport">
+						<h5>FK Železničar Lajkovac</h5>
+						<p>
+							Fudbalski klub Železničar trenutno igra Srpsku ligu Zapad. Klub je osnovan 1927. godine.
+						</p>
+					</div>
+					<div class="sport">
+						<h5>ŽOK Železničar Lajkovac</h5>
+						<p>
+							Ženski odbojkaški klub Železničar osnovaj je 2008. godine. U razvoju je i igra Superligu.
+						</p>
+					</div>
+					<div id="baneri">
+						<img src="slike/fk.png" title="žok železničar" alt="žok železničar"><br/>
+						<img src="slike/zok.png" title="fk železničar" alt="fk železničar">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="cisti"></div>
+		<div id="futer">
+			<div class="kolona">
+			<h6>Koja reka protiče kroz Lajkovac?</h6>
+				<form action="" method="post" name="fAnketa" id="anketa">
+						
+						<input type="radio" name="anketa" id="zmorava">
+						<label for="zmorava">Zapadna Morava</label><br/>
+						
+						<input type="radio" name="anketa" id="sava">
+						<label for="sava">Sava</label><br/>
+						
+						<input type="radio" name="anketa" id="kolubara">
+						<label for="kolubara">Kolubara</label><br/>
+						<input type="button" class="dugme" name="potvrdi" id="potvrdi" value="Potvrdi" onclick="tacanOdgovor();">
+						<input type="reset" class="dugme" name="ponisti" id="ponisti" value="Poništi">
+					</form>		
+			</div>
+			<div class="kolona" id="k2">
+				<h6>Linkovi:</h6>
+				<ul>
+					<li><a href="index.html">Početna</a></li>
+					<li><a href="ogradu.html">O Gradu</a></li>
+					<li><a href="galerija.html">Galerija</a></li>
+					<li><a href="kontakt.html">Kontakt</a></li>
+					<li><a href="oautoru.html">O autoru</a></li>
+				</ul>
+			</div>
+			<div class="kolona">
+				<h6>Pratite nas:</h6>
+				<a target="_blank" href="https://www.facebook.com/havanacaffe.lajkovac/?fref=ts">
+					<img src="slike/facebook.png" alt="facebook">
+				</a>
+				<a target="_blank" href="https://www.youtube.com/">
+					<img src="slike/youtube.png" alt="youtube">
+				</a>
+				<a target="_blank" href="rss.xml">
+					<img src="slike/rss.png" alt="rss">
+				</a>
+				<br/>
+				<p><b><i>©Web programiranje 2016 | Nemanja Savić 21/12</i></b></p>
+				<br/>
+				<a href="dokumentacija.pdf" class="fLink"><b>Dokumentacija</b></a><br/>
+				<a target="_blank" class="fLink" href="sitemap.xml"><b>Mapa sajta</b></a>
+			</div>
+		</div>
+		<div id="top">
+			<a href="#">Vrati na vrh</a>
+		</div>
+	</body>
+</html>

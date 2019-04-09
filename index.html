@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Opština Lajkovac</title>
+		<link rel="stylesheet" type="text/css" href="stil.css"/>
+		<meta name="descripon" content="U sastav opštine Lajkovac pored varošice lajkovac ulazi i 18 naseljenih mesta: Jabučje, Bogovađa, Nepričava, Vračević, Donji Lajkovac, Lajkovac (selo) i druga./>
+		<meta name="author" content="Nemanja Savić"/>
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="lib/jquery-1.4.min.js"></script>
+		<script src="lib/jquery.autocomplete.js" type="text/javascript"></script>
+		<script type="text/javascript" src="lib/jquery.scrollTo.js" charset="utf-8"></script>
+		<link rel="stylesheet" href="input.css" type="text/css" media="screen"/>
+		<script type="text/javascript">
+			$(document).ready(function(){
+  				$("#meni li ul").css({display:"none",left:"auto"});
+  				$("#meni li").hover(function(){
+    			$(this).find('ul').stop(true,true).slideDown('fast');
+ 			 }, function(){
+    			$(this).find('ul').stop(true,true).fadeOut('fast');
+  				});
+  				$(".post table tr:odd").addClass("zebra");
+  				$(".post table tr").hover(function(){
+  					$(this).addClass('zebraHover');
+  				},function(){
+  					$(this).removeClass('zebraHover');
+  				});
+  				function slideShow() {
+  					var trenutna = $('#gore .prikazana');
+  					var sledeca = trenutna.next().length ? trenutna.next() : trenutna.parent().children(':first');
+  
+  					trenutna.hide().removeClass('prikazana');
+  					sledeca.fadeIn().addClass('prikazana');
+  
+  					setTimeout(slideShow, 5000);
+				}
+				slideShow();
+
+				$("#jos1").click(function(){
+					$("#s1").toggle(1000);
+				});
+
+				$("#jos2").click(function(){
+					$("#s2").toggle(1000);
+				});
+
+				  var mesta = [ 'Jabučje', 'Bogovađa', 'Nepričava', 'Vračević', 'Donji Lajkovac', 'Lajkovac (selo)', 'Rubribreza', 'Markova Crkva', 'Ratkovac', 'Pridvorica', 'Mali Borak', 'Skobalj', 'Pepeljevac', 'Slovac', 'Stepanje', 'Strmovo', 'Bajevac','Ćelije'];
+  				$('#tbPretraga').autocomplete(mesta,{
+   					autoFill: true,
+    				selectFirst: true,
+    				width: '240px'
+  				});
+
+  				$(window).scroll(function(){
+  					if ($(this).scrollTop() > 220) {
+           				$('#top').fadeIn();
+        			} else {
+          			 	$('#top').fadeOut();
+       				}
+  				});
+
+  				$('#top a[href=#]').click(function(){
+    				$.scrollTo(0,'slow');
+   					return false;
+  				});
+
+  				$(window).scroll(function(){
+  					if ($(this).scrollTop() > 100) {
+  						$('#logo').fadeOut();
+  						$('#mlogo').fadeIn();
+  					}
+  					else{
+  						$('#mlogo').fadeOut();
+  						$('#logo').fadeIn();
+  					}
+  				});
+			});
+		</script>
+	</head>
+	<body>
+			<div id="zaglavlje">
+				<div id="logo">
+					<a href="index.html"><img src="slike/grb.png" alt="grb_lajkovac"></a>
+				</div>
+				<div id="naslov">
+					<h1>Lajkovac</h1>
+				</div>
+				<div id="logovanje">
+				<form name="formaLogovanje" action="" method="post">
+					<input type="text" class="tbLogovanje" name="tbUsername" placeholder="Username" required><br/>
+					<input type="password" class="tbLogovanje" name="tbLozinka" placeholder="Lozinka" required><br/>
+					<input type="button" name="btbLogin" class="dugme" onclick="log();" value="Pristupi">
+					<input type="reset" name="btnPonisti" class="dugme" value="Poništi">
+					<br/>
+					ILI <a href="registracija.html" class="rLink">REGISTRUJTE SE!</a>
+				</form>
+				</div>
+				<div class="cisti"></div>
+			</div>
+			<div id="meni">
+				<div id="mlogo"></div>
+				<div id="meniLista">
+			<ul>
+				<li class="aktivan"><a href="index.html">Početna</a></li>
+				<li class="aktivan"><a href="#">O Gradu</a>
+					<ul>
+						<li><a href="ogradu.html">Lajkovac</a></li>
+						<li><a href="istorija.html">Istorija</a></li>
+						<li><a href="izletista.html">Izletista</a></li>
+						<li><a href="naselja.xml" target="_blank">Popis stanovnika</a></li>
+					</ul>
+				</li>
+				<li class="aktivan"><a href="galerija.html">Galerija</a></li>
+				<li class="aktivan"><a href="kontakt.html">Kontakt</a></li>
+				<li class="aktivan"><a href="oautoru.html">O autoru</a></li>
+			</ul>
+		</div>
+				<span id="korisnik"></span>
+			</div>
+			
+			<div class="cisti"></div>
+
+			<div id="sadrzaj">
+				<div id="gore">
+					<img src="slike/1.jpg" class="prikazana" alt="lajkovac" width="100%">
+					<img src="slike/2.jpg" alt="markova crkva" width="100%">
+					<img src="slike/3.jpg" alt="bogovadja" width="100%">
+					<img src="slike/4.jpg" alt="vodenica" width="100%">
+				</div>
+				<div class="cisti"></div>
+				<div id="dole">
+					<div id="levo">
+						<div class="post" id="prvi">
+								<a href="istorija.html">
+									<img src="slike/cira.jpg" title="cira" alt="cira">
+								</a>
+								<a href="istorija.html">
+									<h3>Istorija</h3>
+								</a>
+								<p>
+									Varošica je nastala prolaskom prvog voza-legendarnog "Ćire" kroz ovo mesto. Bilo je to 1908. godine kada je Lajkovac već bio određen za železničku stanicu uzanog koloseka Obrenovac-Lajkovac.
+									<p class="sakriveno" id="s1">
+										Lajkovac je ubrzo i postao najveća železnička stanica uzane pruge u Srbiji, raskrsnica za Čačak, Užice, Višegrad i Sarajevo, Valjevo, Aranđelovac i Beograd. Bio je Jugoslavija u malom, jer je nastanjen železničarima sa svih strana Jugoslavije, pa je i imao katoličku crkvu za železničare te vere. Sa nestankom "Ćire", Lajkovcu su ostale samo uspomene i pesma u kojoj je ova varošica opevana "Ide Mile lajkovačkom prugom".
+									</p>
+									<br/>
+									<input type="button" class="dugme" name="btnVise" id="jos1" value="Pročitaj još">
+								</p>
+							</div>
+							<div class="post">
+								<a href="izletista.html">
+									<img src="slike/buzometar.jpg" title="buzometar" alt="buzometar">
+								</a>
+								<a href="izletista.html">
+									<h3>Izletišta i znamenitosti</h3>
+								</a>
+								<p>
+									Selo Bogovađa sa nepreglednim šumama, blago zatalasanim terenima, savremeno opremljenim motelom, letovalištem Crvenog krsta iz Beograda. Od objekata kulturno-istorijske baštine posebno se ističe i manastir Bogovađa u istoimenom selu.
+									<p class="sakriveno" id="s2">
+										Još davne 1567.godine pisali su prepisivači knjiga u manastiru, dok se škola u manastiru pominje tek početkom 18.veka. Pred Prvi srpski ustanak perom,knjigom i slikom se u Bogovađi bavi arhimandrit manastira Hadži-Ruvim Nešković. U to vreme manastir Bogovađa raspolaže sa jednom od najvećih biblioteka u Srbiji. Takođe je tu sedište Praviteljstvujušćeg Sovjeta naroda Srpskog (prve srpske vlade) 1805.U selu Ćelije nalazi se spomen-kosturnica palim borcima u Kolubarskoj bici koja se odigrala novembra i decembra 1914 godine između srpske vojske i dosta jače,opremljenije i brojnije austrougarske vojske. Najžešće borbe vodene su baš na brdima u Ćelijama-Čovci i Vrapče-brdu.Posle rata,na ostacima mnogo starijeg zdanja podignuta je crkva Svetog Đorđa. Crkvica je podignuta na ruševinama starog manastira iz 13.veka. U središnjem delu crkve,prilikom radova na obnovi manastira,pronađen je kostur nekog srpskog velmože iz srednjeg veka. Veruje se da je Grgur slepi, sin despota Đurđa Brankovića. Trenutno se vrše radovi na obnovi manastira.U selu Markova Crkva nalazi se veoma stara crkva koja potiče iz srednjeg veka.
+									</p>
+									<br/>
+									<input type="button" class="dugme" name="btnVise" id="jos2" value="Pročitaj još">
+								</p>
+							</div>
+							<div class="post">
+								<script type="text/javascript">
+										if(window.XMLHttpRequest)
+											{
+												xmlhttp=new XMLHttpRequest();
+											}
+											else
+											{
+												xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+											}
+											xmlhttp.open("GET","naselja.xml",false);
+											xmlhttp.send();
+											xmlDoc=xmlhttp.responseXML;
+											document.write("<table><thead><th>Naziv</th><th>Broj stanovnika</th><th>Godina popisa</th></thead>");
+											var mesto = xmlDoc.getElementsByTagName('naselje');
+
+											for(var i=0;i<mesto.length;i++){
+												document.write("<tr><td>"+mesto[i].getElementsByTagName('naziv')[0].childNodes[0].nodeValue+"</td><td>"+mesto[i].getElementsByTagName('brStanovnika')[0].childNodes[0].nodeValue+"</td><td>"+mesto[i].getElementsByTagName('godinaPopisa')[0].childNodes[0].nodeValue+"</td></tr>");
+											}
+											document.write("</table>");
+								</script>
+							</div>
+					</div>
+					<div id="desno">
+							<div id="pretraga">
+								<form action="pretraga.html" name="formaPretraga" method="post">
+									<input type="text" id="tbPretraga" class="tbPretraga" name="tbPretraga" autocomplete="on" />
+									<input type="button" class="pretraga" id="btnPretraga" name="btnPretraga" onclick="pretraga();" value=""/>
+								</form>
+							</div>
+						<div class="sport">
+							<h5>FK Železničar Lajkovac</h5>
+							<p>
+								Fudbalski klub Železničar trenutno igra Srpsku ligu Zapad. Klub je osnovan 1927. godine.
+							</p>
+						</div>
+						<div class="sport">
+							<h5>ŽOK Železničar Lajkovac</h5>
+							<p>
+								Ženski odbojkaški klub Železničar osnovaj je 2008. godine. U razvoju je i igra Superligu.
+							</p>
+						</div>
+						<div id="baneri">
+							<img src="slike/fk.png" title="žok železničar" alt="žok železničar"><br/>
+							<img src="slike/zok.png" title="fk železničar" alt="fk železničar">
+						</div>
+						<div id="mapa">
+							<h3>Lokacija:</h3>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d91269.41313584185!2d20.09164387029378!3d44.36811635334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4759f84381510783%3A0x7977bbfad0cf29a0!2z0JvQsNGY0LrQvtCy0LDRhg!5e0!3m2!1ssr!2srs!4v1475760765410" width="350" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="cisti"></div>
+			<div id="futer">
+				<div class="kolona">
+				<h6>Koja reka protiče kroz Lajkovac?</h6>
+				<form action="" method="post" name="fAnketa" id="anketa">
+						
+						<input type="radio" name="anketa" id="zmorava">
+						<label for="zmorava">Zapadna Morava</label><br/>
+						
+						<input type="radio" name="anketa" id="sava">
+						<label for="sava">Sava</label><br/>
+						
+						<input type="radio" name="anketa" id="kolubara">
+						<label for="kolubara">Kolubara</label><br/>
+						<input type="button" class="dugme" name="potvrdi" id="potvrdi" value="Potvrdi" onclick="tacanOdgovor();">
+						<input type="reset" class="dugme" name="ponisti" id="ponisti" value="Poništi">
+					</form>				
+				</div>
+				<div class="kolona" id="k2">
+					<h6>Linkovi:</h6>
+					<ul>
+						<li><a href="index.html">Početna</a></li>
+						<li><a href="ogradu.html">O Gradu</a></li>
+						<li><a href="galerija.html">Galerija</a></li>
+						<li><a href="kontakt.html">Kontakt</a></li>
+						<li><a href="oautoru.html">O autoru</a></li>
+					</ul>
+				</div>
+				<div class="kolona">
+					<h6>Pratite nas:</h6>
+					<a target="_blank" href="https://www.facebook.com/havanacaffe.lajkovac/?fref=ts">
+						<img src="slike/facebook.png" alt="facebook">
+					</a>
+					<a target="_blank" href="https://www.youtube.com/">
+						<img src="slike/youtube.png" alt="youtube">
+					</a>
+					<a target="_blank" href="rss.xml">
+						<img src="slike/rss.png" alt="rss">
+					</a>
+					<br/>
+					<p><b><i>©Web programiranje 2016 | Nemanja Savić 21/12</i></b></p>
+					
+					Sadržaj ove strane je preuzet sa Wikipedie<br/>
+					<a href="dokumentacija.pdf" class="fLink"><b>Dokumentacija</b></a><br/>
+					<a target="_blank" class="fLink" href="sitemap.xml"><b>Mapa sajta</b></a>
+				</div>
+			</div>
+			<div class="cisti"></div>
+			<div id="top">
+				<a href="#">Vrati na vrh</a>
+			</div>
+	</body>
+</html>

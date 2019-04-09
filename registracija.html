@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Opština Lajkovac</title>
+		<link rel="stylesheet" type="text/css" href="stil.css">
+		<meta name="descripon" content="U sastav opštine Lajkovac pored varošice lajkovac ulazi i 18 naseljenih mesta: Jabučje, Bogovađa, Nepričava, Vračević, Donji Lajkovac, Lajkovac (selo), Rubribreza, Markova Crkva, Ratkovac, Pridvorica, Mali Borak, Skobalj, Pepeljevac, Slovac, Stepanje, Strmovo, Bajevac i Ćelije.">
+		<meta name="keywords" content="lajkovac, opstina, lajkovacka pruga, zeleznicar lajkovac, Bogovađa">
+		<meta name="author" content="Nemanja Savić">
+		<script language="JavaScript" src="script.js"></script>
+		<script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
+		<script type="text/javascript" src="lib/jquery.scrollTo.js" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#meni li ul").css({display:"none",left:"auto"});
+  				$("#meni li").hover(function(){
+    			$(this).find('ul').stop(true,true).slideDown('fast');
+ 			 }, function(){
+    			$(this).find('ul').stop(true,true).fadeOut('fast');
+  				});
+
+  				$(window).scroll(function(){
+  					if ($(this).scrollTop() > 220) {
+           				$('#top').fadeIn();
+        			} else {
+          			 	$('#top').fadeOut();
+       				}
+  				});
+
+  				$('#top a[href=#]').click(function(){
+    				$.scrollTo(0,'slow');
+   					return false;
+  				});
+
+  				$(window).scroll(function(){
+  					if ($(this).scrollTop() > 100) {
+  						$('#logo').fadeOut();
+  						$('#mlogo').fadeIn();
+  					}
+  					else{
+  						$('#mlogo').fadeOut();
+  						$('#logo').fadeIn();
+  					}
+  				});
+			});
+		</script>
+		<script type="text/javascript">
+		var datum = new Date();
+		var godina1 = datum.getFullYear();
+		
+		function god(){
+			
+			var godina2 = document.forma.godina;
+			for(var i=1900; i<=godina1;i++){
+				
+				var option = document.createElement('option');
+				option.value = i ;
+				option.innerHTML = i;
+				godina2.appendChild(option);
+
+				
+			}
+		}
+		function februar(izabranMesec){
+			var dan = document.forma.dan;
+			var godina = document.forma.godina.options[document.forma.godina.selectedIndex].text;
+			var godin = parseInt(godina);
+			
+				if (godin % 4 == 0 && document.forma.mesec.options[document.forma.mesec.selectedIndex].value == 2) {
+					for( var i = 1 ; i<30 ; i++)
+					{
+						var option = document.createElement('option');
+						option.value = i;
+						option.innerHTML = i ;
+						dan.appendChild(option);
+					}
+				}
+				else 
+				{
+					
+					var brojDana = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
+
+
+					var mesec = izabranMesec.options[izabranMesec.selectedIndex].value;
+					if( mesec != 0)
+					{
+						var mesec1 = parseInt(mesec);
+						document.forma.dan.options.length = 0;
+						for(var i = 0 ; i<brojDana[mesec1-1];i++)
+						{
+							document.forma.dan.options[i] = new Option(i+1);
+						}
+					}
+					
+				}
+				
+				function resetDana()
+				{
+					document.getElementById("dan").value = 0;
+				}
+			
+		}
+	</script>
+
+	</head>
+	<body onload="god();">
+		<div id="zaglavlje">
+			<div id="logo">
+				<a href="index.html"><img src="slike/grb.png" alt="grb_lajkovac"></a>
+			</div>
+			<div id="naslov">
+				<h1>Lajkovac</h1>
+			</div>
+			<div id="logovanje">
+				<form name="formaLogovanje" action="" method="post">
+					<input type="text" class="tbLogovanje" name="tbUsername" placeholder="Username" required><br/>
+					<input type="password" class="tbLogovanje" name="tbLozinka" placeholder="Lozinka" required><br/>
+					<input type="button" name="btbLogin" class="dugme" onclick="log();" value="Pristupi">
+					<input type="reset" name="btnPonisti" class="dugme" value="Poništi">
+					<br/>
+					ILI <a href="registracija.html" class="rLink">REGISTRUJTE SE!</a>
+				</form>
+			</div>
+			<div class="cisti"></div>
+		</div>
+		<div id="meni">
+		<div id="mlogo"></div>
+			<div id="meniLista">
+			<ul>
+				<li class="aktivan"><a href="index.html">Početna</a></li>
+				<li class="aktivan"><a href="#">O Gradu</a>
+					<ul>
+						<li><a href="ogradu.html">Lajkovac</a></li>
+						<li><a href="istorija.html">Istorija</a></li>
+						<li><a href="izletista.html">Izletista</a></li>
+						<li><a href="naselja.xml" target="_blank">Popis stanovnika</a></li>
+					</ul>
+				</li>
+				<li class="aktivan"><a href="galerija.html">Galerija</a></li>
+				<li class="aktivan"><a href="kontakt.html">Kontakt</a></li>
+				<li class="aktivan"><a href="oautoru.html">O autoru</a></li>
+			</ul>
+		</div>
+			<span id="korisnik"></span>
+		</div>
+		
+		<div class="cisti"></div>
+
+		<div id="sadrzaj">
+			<div id="dole">
+				<div id="levo">
+					<div id="registracija">
+						<h3>Forma za registraciju!</h3>
+						<form method="post" action="" id="fRegistracija" name="forma">
+							<table>
+								<tr>
+									<td><label>Ime:</label></td>
+									<td><input type="text" name="ime" id="ime" required placeholder="Ime" onblur="proveraIme();"></td>
+								</tr>
+								<tr>
+									<td><label>Prezime:</label></td>
+									<td><input type="text" name="prezime" id="prezime" required placeholder="Prezime" onblur="proveraPrezime();" ></td>
+								</tr>
+								<tr>
+									<td><label>Username:</label></td>
+									<td><input type="text" name="tbUsername" id="tbUsername" required placeholder="Username" onblur="proveraUser();" ></td>
+								</tr>
+								<tr>
+									<td><label>Datum rodjenja:</label></td>
+									<td>
+									<select name="godina" id="godina" onchange="resetDana();"><!--Zasto ne radi-->
+										<option value="0">Godina...</option>
+										<!--<option value="1">2016</option>
+										<option value="2">2015</option>
+										<option value="3">2014</option>
+										<option value="4">2013</option>
+										<option value="5">2012</option>
+										<option value="6">2011</option>
+										<option value="7">2010</option>
+										<option value="8">2009</option>
+										<option value="9">2008</option>
+										<option value="10">2007</option>
+										<option value="11">2006</option>
+										<option value="12">2005</option>
+										<option value="13">2004</option>
+										<option value="14">2003</option>
+										<option value="15">2002</option>
+										<option value="16">2001</option>
+										<option value="17">2000</option>
+										<option value="18">1999</option>
+										<option value="19">1998</option>
+										<option value="20">1997</option>
+										<option value="21">1996</option>
+										<option value="22">1995</option>
+										<option value="23">1994</option>
+										<option value="24">1993</option>
+										<option value="25">1992</option>
+										<option value="26">1991</option>
+										<option value="27">1990</option>
+										<option value="28">1989</option>
+										<option value="29">1988</option>
+										<option value="30">1987</option>
+										<option value="31">1986</option>
+										<option value="32">1985</option>
+										<option value="33">1984</option>
+										<option value="34">1983</option>
+										<option value="35">1982</option>-->
+										
+									</select>
+									<select name="mesec" id="mesec" onchange="februar(this);">
+										<option value="0">Mesec...</option>
+										<option value="1">Januar</option>
+										<option value="2">Februar</option>
+										<option value="3">Mart</option>
+										<option value="4">April</option>
+										<option value="5">Maj</option>
+										<option value="6">Jun</option>
+										<option value="7">Jul</option>
+										<option value="8">Avgust</option>
+										<option value="9">Septembar</option>
+										<option value="10">Oktobar</option>
+										<option value="11">Novembar</option>
+										<option value="12">Decembar</option>
+									</select>
+									<select name="dan" id="dan">
+										<option value="0">Dan...</option>
+									<!--	<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
+										<option value="21">21</option>
+										<option value="22">22</option>
+										<option value="23">23</option>
+										<option value="24">24</option>
+										<option value="25">25</option>
+										<option value="26">26</option>
+										<option value="27">27</option>
+										<option value="28">28</option>
+										<option value="29">29</option>
+										<option value="30">30</option>
+										<option value="31">31</option>-->
+									</select>
+									</td>
+								</tr>
+								<tr>
+									<td><label>Pol:</label></td>
+									<td>
+										<input type="radio" name="pol" id="musko" value="musko">
+										<label>Musko</label>
+										<input type="radio" name="pol" id="zensko" value="zensko">
+										<label>Žensko</label>
+									</td>
+								</tr>
+								<tr>
+									<td><label>Email:</label></td>
+									<td><input type="text" name="email" id="email" required  placeholder="pera@pera.com" onblur="proveraEmail();"></td>
+								</tr>
+								<tr>
+									<td><label>Lozinka:</label></td>
+									<td><input type="password" name="tbLozinka1" id="tbLozinka1" required placeholder="Lozinka" onblur="proveraLozinka();"></td>
+								</tr>
+								<tr>
+									<td><label>Potvrdi lozinku:</label></td>
+									<td><input type="password" name="tbLozinka2" id="tbLozinka2" required placeholder="Lozinka ponovo" onblur="proveraLozinkaPonovo();"></td>
+								</tr>
+								<tr>
+									<td colspan="2"  align="center"><input class="dugme" type="button" id="btnSubmit" name="btnSubmit" value="Potvrdi podatke" onclick="klik();">
+										<input type="reset" class="dugme" id="btnRestart" name="btnRestart" value="Poništi">
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+				<div id="desno">
+						<div id="pretraga">
+								<form action="pretraga.html" name="formaPretraga" method="post">
+						<input type="text" id="tbPretraga" class="tbPretraga" name="tbPretraga" />
+						<input type="button" class="pretraga" id="btnPretraga" name="btnPretraga" onclick="pretraga();" value=""/>
+						</form>
+							</div>
+					<div class="sport">
+						<h5>FK Železničar Lajkovac</h5>
+						<p>
+							Fudbalski klub Železničar trenutno igra Srpsku ligu Zapad. Klub je osnovan 1927. godine.
+						</p>
+					</div>
+					<div class="sport">
+						<h5>ŽOK Železničar Lajkovac</h5>
+						<p>
+							Ženski odbojkaški klub Železničar osnovaj je 2008. godine. U razvoju je i igra Superligu.
+						</p>
+					</div>
+					<div id="baneri">
+						<img src="slike/fk.png" title="žok železničar" alt="žok železničar"><br/>
+						<img src="slike/zok.png" title="fk železničar" alt="fk železničar">
+					</div>
+					<div id="mapa">
+						<h3>Lokacija:</h3>
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d91269.41313584185!2d20.09164387029378!3d44.36811635334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4759f84381510783%3A0x7977bbfad0cf29a0!2z0JvQsNGY0LrQvtCy0LDRhg!5e0!3m2!1ssr!2srs!4v1475760765410" width="350" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="cisti"></div>
+		<div id="futer">
+			<div class="kolona">
+			<h6>Koja reka protiče kroz Lajkovac?</h6>
+				<form action="" method="post" name="fAnketa" id="anketa">
+						
+						<input type="radio" name="anketa" id="zmorava">
+						<label for="zmorava">Zapadna Morava</label><br/>
+						
+						<input type="radio" name="anketa" id="sava">
+						<label for="sava">Sava</label><br/>
+						
+						<input type="radio" name="anketa" id="kolubara">
+						<label for="kolubara">Kolubara</label><br/>
+						<input type="button" class="dugme" name="potvrdi" id="potvrdi" value="Potvrdi" onclick="tacanOdgovor();">
+						<input type="reset" class="dugme" name="ponisti" id="ponisti" value="Poništi">
+					</form>		
+			</div>
+			<div class="kolona" id="k2">
+				<h6>Linkovi:</h6>
+				<ul>
+					<li><a href="index.html">Početna</a></li>
+					<li><a href="ogradu.html">O Gradu</a></li>
+					<li><a href="galerija.html">Galerija</a></li>
+					<li><a href="kontakt.html">Kontakt</a></li>
+					<li><a href="oautoru.html">O autoru</a></li>
+				</ul>
+			</div>
+			<div class="kolona">
+				<h6>Pratite nas:</h6>
+				<a target="_blank" href="https://www.facebook.com/havanacaffe.lajkovac/?fref=ts">
+					<img src="slike/facebook.png" alt="facebook">
+				</a>
+				<a target="_blank" href="https://www.youtube.com/">
+					<img src="slike/youtube.png" alt="youtube">
+				</a>
+				<a target="_blank" href="rss.xml">
+					<img src="slike/rss.png" alt="rss">
+				</a>
+				<br/>
+				<p><b><i>©Web programiranje 2016 | Nemanja Savić 21/12</i></b></p>
+				<br/>
+				<a href="dokumentacija.pdf" class="fLink"><b>Dokumentacija</b></a><br/>
+				<a target="_blank" class="fLink" href="sitemap.xml"><b>Mapa sajta</b></a>
+			</div>
+		</div>
+		<div id="top">
+			<a href="#">Vrati na vrh</a>
+		</div>
+	</body>
+</html>

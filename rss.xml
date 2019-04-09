@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rssxsl.xsl"?>
+<rss version="2.0">
+
+	<channel>
+		<title>Ukratko o gradu</title>
+		<link>http://lajkovacpruga.byethost14.com/index.html</link>
+		<description>Ovde možete pročitati zanimljivosti o gradu</description>
+		<item>
+			<title>Istorija</title>
+			<link>http://lajkovacpruga.byethost14.com/istorja.html</link>
+			<description>Varošica je nastala prolaskom prvog voza-legendarnog "Ćire" kroz ovo mesto. Bilo je to 1908. godine kada je Lajkovac već bio određen za železničku stanicu uzanog koloseka Obrenovac-Lajkovac. </description>
+		</item>
+		<item>
+			<title>Izletišta i znamenitosti</title>
+			<link>http://lajkovacpruga.byethost14.com/izletista.html</link>
+			<description>Selo Bogovađa sa nepreglednim šumama, blago zatalasanim terenima, savremeno opremljenim motelom, letovalištem Crvenog krsta iz Beograda. Od objekata kulturno-istorijske baštine posebno se ističe i manastir Bogovađa u istoimenom selu. </description>
+		</item>
+	</channel>
+</rss>
