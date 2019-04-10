@@ -19,3 +19,6 @@ Sublime Text
 
 ## Ostalo
 AJAX, HTML, CSS, lightBox(jQuery lib), jQuery, XML
+
+# Link
+http://lajkovacpruga.byethost14.com/
